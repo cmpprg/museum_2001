@@ -18,6 +18,14 @@ class Museum
   end
 
   def admit(patron)
-    @patrons << patron 
+    @patrons << patron
+  end
+
+  def patrons_by_exhibit_interest
+    @exhibits.reduce({}) do |patron_by_exhibit, exhibit|
+      patrons = @patrons.find_all{|patron| patron.interests.include?(exhibit.name)}
+      patron_by_exhibit[exhibit] = patrons
+      patron_by_exhibit
+    end
   end
 end

@@ -92,6 +92,9 @@ class MuseumTest < Minitest::Test
     patron_2.add_interest("Dead Sea Scrolls")
     patron_3 = Patron.new("Johnny", 5)
     patron_3.add_interest("Dead Sea Scrolls")
+    dmns.admit(patron_1)
+    dmns.admit(patron_2)
+    dmns.admit(patron_3)
 
     expected = {
                 gems_and_minerals => [patron_1],
