@@ -34,6 +34,17 @@ class Museum
       patron.interests.include?(exhibit.name) &&
       patron.spending_money < exhibit.cost
     end
-  
   end
+
+  def draw_lottery_winner(exhibit)
+    ticket_lottery_contestants(exhibit).sample.name
+  end
+
+  def announce_lotter_winner(exhibit)
+    return "No winners for this lottery" if draw_lottery_winner(exhibit) == nil
+    "#{draw_lottery_winner(exhibit)} has won the #{exhibit.name} lottery!"
+  end
+
+
+
 end
